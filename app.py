@@ -201,8 +201,8 @@ st.markdown("""
 
 # chips — labels curtos, sem use_container_width para nao esticar
 exemplos = [
-    "IA", "Machine Learning", "Epidemiologia",
-    "Bioinformatica", "Estatistica", "Genomica", "Clinica",
+    "Machine Learning", "Epidemiologia", "Bioinformatica",
+    "Estatistica", "Genomica", "Clinica",
 ]
 
 cols = st.columns(len(exemplos))
