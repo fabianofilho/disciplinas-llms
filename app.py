@@ -111,8 +111,25 @@ button[kind="header"],
     text-transform: uppercase; padding: 3px 10px; border-radius: 20px; margin-bottom: 6px;
 }
 
-/* botoes de chip via st.button ficam inline */
-div[data-testid="stHorizontalBlock"] > div { flex: 0 0 auto !important; }
+/* botoes de chip — container wrap, colunas auto-tamanho */
+div[data-testid="stHorizontalBlock"] {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    justify-content: center !important;
+}
+div[data-testid="stHorizontalBlock"] > div {
+    flex: 0 0 auto !important;
+    min-width: fit-content !important;
+    width: auto !important;
+}
+div[data-testid="stHorizontalBlock"] button {
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    min-width: fit-content !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -182,16 +199,16 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# chips — uma linha de botões compactos
+# chips — labels curtos, sem use_container_width para nao esticar
 exemplos = [
-    "Artificial Intelligence", "Machine Learning", "Epidemiology",
-    "Bioinformatics", "Clinical Research", "Statistics", "Genomics",
+    "IA", "Machine Learning", "Epidemiologia",
+    "Bioinformatica", "Estatistica", "Genomica", "Clinica",
 ]
 
 cols = st.columns(len(exemplos))
 for i, ex in enumerate(exemplos):
     with cols[i]:
-        if st.button(ex, key=f"chip_{ex}", use_container_width=True):
+        if st.button(ex, key=f"chip_{ex}"):
             st.session_state.query_atual = ex
             if ex not in st.session_state.historico:
                 st.session_state.historico.append(ex)
