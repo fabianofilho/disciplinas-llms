@@ -1,0 +1,7 @@
+.env
+data/disciplinas.db
+data/*.csv
+data/*.json
+__pycache__/
+*.pyc
+.venv/
