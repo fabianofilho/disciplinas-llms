@@ -22,6 +22,7 @@ st.set_page_config(
     page_title="Disciplinas USP | LABDAPS",
     page_icon="🎓",
     layout="centered",
+    initial_sidebar_state="collapsed",
 )
 
 # ── estilos ───────────────────────────────────────────────────────────────────
@@ -32,9 +33,16 @@ st.markdown("""
 
 html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
 
-/* esconde sidebar completamente */
-[data-testid="stSidebar"] { display: none !important; }
-[data-testid="collapsedControl"] { display: none !important; }
+/* esconde sidebar e todos os controles relacionados */
+[data-testid="stSidebar"],
+[data-testid="collapsedControl"],
+[data-testid="stSidebarCollapsedControl"],
+button[kind="header"],
+.st-emotion-cache-czk5ss,
+#MainMenu { display: none !important; }
+
+/* remove margem lateral que o Streamlit reserva para a sidebar */
+.main .block-container { max-width: 780px; padding: 0 2rem 4rem; }
 
 /* hero */
 .hero { text-align: center; padding: 52px 0 24px; }
